@@ -3,8 +3,8 @@
 
 class alu_base_seq extends uvm_sequence#(alu_seq_item);
 
-    `uvm_objects_utils(alu_base_seq)
-    `uvm_declare_p_sequencer(alu_sequencer)
+    `uvm_object_utils(alu_base_seq)
+    //`uvm_declare_p_sequencer(alu_sequencer)
 
 
     function new(string name = "alu_base_seq");

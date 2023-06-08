@@ -3,6 +3,7 @@
 
 class alu_monitor extends uvm_monitor;
 
+    `uvm_component_utils(alu_monitor)
     virtual alu_interface vif;
     alu_seq_item item;
 
