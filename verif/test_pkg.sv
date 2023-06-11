@@ -1,5 +1,5 @@
-`ifndef CALC_TEST_PKG_SV
-`define CALC_TEST_PKG_SV
+`ifndef ALU_TEST_PKG_SV
+`define ALU_TEST_PKG_SV
 
 package alu_test_pkg;
 
@@ -11,7 +11,7 @@ package alu_test_pkg;
     import configurations_pkg::*;   
     
     `include "scoreboard.sv"
-    `include "environment.sv"   
+    `include "env.sv"   
     `include "test_base.sv"
     `include "test_simple.sv"
 

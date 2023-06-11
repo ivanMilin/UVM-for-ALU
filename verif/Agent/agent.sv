@@ -18,12 +18,17 @@ class alu_agent extends uvm_agent;
         
         super.build_phase(phase);
         `uvm_info("AGENT_CLASS", "Build Phase!", UVM_HIGH)
-    
+        
+        if(!uvm_config_db#(alu_config)::get(this, "", "alu_config", cfg))
+         `uvm_fatal("NOCONFIG",{"Config object must be set for: ",get_full_name(),".cfg"})    
+        
         mon = alu_monitor::type_id::create("mon", this);
 
         if(cfg.is_active == UVM_ACTIVE) begin    
             drv = alu_driver::type_id::create("drv", this);
             seqr = alu_sequencer::type_id::create("seqr", this);
+            
+        
         end
     endfunction: build_phase
 

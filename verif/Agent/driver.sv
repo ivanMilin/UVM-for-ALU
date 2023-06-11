@@ -4,7 +4,7 @@
 class alu_driver extends uvm_driver#(alu_seq_item);
     
     `uvm_component_utils(alu_driver)
-  
+    alu_seq_item item;
     virtual alu_interface vif;
 
     function new(string name = "alu_driver", uvm_component parent);

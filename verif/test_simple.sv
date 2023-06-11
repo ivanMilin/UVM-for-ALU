@@ -3,10 +3,12 @@
 
 class alu_test_simple extends alu_test_base;
 
+    alu_simple_seq test_seq;
     `uvm_component_utils(alu_test_simple)
 
     function new(string name = "test_simple", uvm_component parent = null);
 	    super.new(name,parent);
+	    test_seq = alu_simple_seq::type_id::create("test_seq");
     endfunction : new
 
     task run_phase (uvm_phase phase);
@@ -15,14 +17,8 @@ class alu_test_simple extends alu_test_base;
 
         phase.raise_objection(this);
 
-        //reset_seq
-        reset_seq = alu_base_sequence::type_id::create("reset_seq");
-        reset_seq.start(env.agnt.seqr);
-        #10;
-
         repeat(100) begin
             //test_seq
-            test_seq = alu_test_sequence::type_id::create("test_seq");
             test_seq.start(env.agnt.seqr);
             #10;
         end
@@ -30,3 +26,5 @@ class alu_test_simple extends alu_test_base;
         phase.drop_objection(this);
 
     endtask: run_phase
+endclass :alu_test_simple
+`endif

@@ -1,9 +1,11 @@
 class alu_test_base extends uvm_test;
-    `uvm_component_utils(alu_test)
+    `uvm_component_utils(alu_test_base)
 
     alu_env env;
-    alu_base_sequence reset_seq;
-    alu_test_sequence test_seq;
+    alu_simple_seq reset_seq;
+    alu_config cfg;
+
+    //alu_test_sequence test_seq;
 
 
     //--------------------------------------------------------
@@ -23,6 +25,8 @@ class alu_test_base extends uvm_test;
         `uvm_info("TEST_CLASS", "Build Phase!", UVM_HIGH)
 
         env = alu_env::type_id::create("env", this);
+        cfg = alu_config::type_id::create("cfg");      
+	    uvm_config_db#(alu_config)::set(this, "env", "alu_config", cfg);  
 
     endfunction: build_phase
 

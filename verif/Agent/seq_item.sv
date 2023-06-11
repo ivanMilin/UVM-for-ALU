@@ -16,7 +16,6 @@ class alu_seq_item extends uvm_sequence_item;
     constraint input2_c {b inside {[1:10]};}
     constraint op_code_c {op_code inside {0,1,2,3};}
 
-
     function new(string name = "alu_seq_item");
         super.new(name);
     endfunction: new
