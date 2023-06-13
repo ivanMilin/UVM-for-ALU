@@ -4,10 +4,22 @@
 class alu_monitor extends uvm_monitor;
 
     `uvm_component_utils(alu_monitor)
+    
     virtual alu_interface vif;
     alu_seq_item item;
 
     uvm_analysis_port#(alu_seq_item) monitor_port;
+
+    covergroup command_check;
+        option.per_instance = 1;
+
+        cmd: coverpoint vif.op_code{
+            bins add = {4'b0000};
+            bins sub = {4'b0001};
+            bins multiply = {4'b0010};
+            bins divide = {4'b0011};
+        }
+    endgroup
 
     function new(string name = "alu_monitor", uvm_component parent);
         super.new(name, parent);
